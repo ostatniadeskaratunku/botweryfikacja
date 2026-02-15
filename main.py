@@ -66,7 +66,7 @@ async def on_ready():
         embed_rules.add_field(name="§4. DZIAŁALNOŚĆ KOMERCYJNA I REKLAMA", value="1. Całkowity zakaz reklamowania innych projektów edukacyjnych bez pisemnej zgody Administracji.\n2. Próby sprzedaży własnych materiałów, cheatów lub kont w grach będą karane natychmiastowym usunięciem z serwera.\n3. Wszelkie transakcje wspierające projekt (Premium/VIP) odbywają się wyłącznie przez oficjalny system zgłoszeń (Ticket).", inline=False)
         embed_rules.add_field(name="§5. PRZEPISY KOŃCOWE (SANKCJE)", value="• **NARUSZENIE LEKKIE:** Ostrzeżenie słowne lub czasowe wyciszenie (Timeout).\n• **NARUSZENIE CIĘŻKIE:** Trwałe wyciszenie, usunięcie ról.\n• **NARUSZENIE KRYTYCZNE:** Permanentna blokada konta (BAN).", inline=False)
         
-        embed_rules.set_footer(text="ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ | WSZELKIE PRAWA ZASTRZEŻONE 𝟸𝟶𝟸𝟼", icon_url=LOGO)
+        embed_rules.set_footer(text="ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ | WSZELKIE PRAWA ZASTRZEŻONE 𝟸𝟶𝟸𝟼 | Regulamin serwera", icon_url=LOGO)
         embed_rules.set_thumbnail(url=LOGO)
         
         await rules_ch.send(content="📑 **PROCEDURY BEZPIECZEŃSTWA I REGULAMIN KORZYSTANIA Z SERWERA | EDYCJA 2026**", embed=embed_rules)
@@ -77,10 +77,10 @@ async def on_ready():
         await info_ch.purge(limit=10, check=lambda m: m.author == bot.user)
         embed_info = discord.Embed(
             title="🛡️ INSTRUKCJA WERYFIKACJI",
-            description=f"Witaj! Aby uzyskać pełny dostęp do serwera:\n1. Przejdź na kanał <#{CHANNEL_VERIFY_CMD}>\n2. Wpisz komendę `/weryfikuj`",
+            description=f"Witaj! Aby uzyskać pełny dostęp do serwera:\n1. Przejdź na kanał <#{CHANNEL_VERIFY_CMD}>\n2. Wpisz na kanale komendę `/weryfikuj`\n3. Gotowe! Masz już dostęp do serwera ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ",
             color=COLOR
         )
-        embed_info.set_footer(text="ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ | Edycja 2026", icon_url=LOGO)
+        embed_info.set_footer(text="ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ | Edycja 2026 | Instrukcja weryfikacji", icon_url=LOGO)
         await info_ch.send(embed=embed_info)
 
 # --- POWITANIA ---
@@ -89,17 +89,17 @@ async def on_member_join(member):
     welcome_ch = bot.get_channel(CHANNEL_WELCOME)
     if welcome_ch:
         embed = discord.Embed(
-            title="✨ Nowy użytkownik!",
-            description=f"Witaj {member.mention} w społeczności **ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ**!",
+            title="✨ Witamy na serwerze ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ! ✨",
+            description=f"Witaj {member.mention} w społeczności - **ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ**!",
             color=COLOR
         )
         embed.set_thumbnail(url=member.display_avatar.url)
         embed.add_field(name="ID", value=f"`{member.id}`", inline=True)
-        embed.set_footer(text="Edycja 2026", icon_url=LOGO)
+        embed.set_footer(text="ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ | Edycja 2026 | Nowy użytkownik", icon_url=LOGO)
         await welcome_ch.send(embed=embed)
 
 # --- KOMENDA WERYFIKACJI ---
-@bot.tree.command(name="weryfikuj", description="Weryfikacja konta")
+@bot.tree.command(name="weryfikuj", description="Zweryfikuj się na serwerze - dzięki temu uzyskasz dostęp do materiałów!")
 async def verify(interaction: discord.Interaction):
     if interaction.channel_id != CHANNEL_VERIFY_CMD:
         return await interaction.response.send_message("Tej komendy użyjesz tylko na kanale weryfikacyjnym!", ephemeral=True)
@@ -120,7 +120,7 @@ async def verify(interaction: discord.Interaction):
         embed_res.add_field(name="Nick", value=interaction.user.name, inline=True)
         embed_res.add_field(name="ID", value=interaction.user.id, inline=True)
         embed_res.set_thumbnail(url=interaction.user.display_avatar.url)
-        embed_res.set_footer(text="ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ | Edycja 2026", icon_url=LOGO)
+        embed_res.set_footer(text="ᴏsᴛᴀᴛɴɪᴀ ᴅᴇsᴋᴀ ʀᴀᴛᴜɴᴋᴜ | Edycja 2026 | Weryfikacja", icon_url=LOGO)
         
         await interaction.response.send_message(embed=embed_res, ephemeral=True)
     except Exception as e:
