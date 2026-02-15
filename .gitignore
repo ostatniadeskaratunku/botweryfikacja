@@ -1,0 +1,19 @@
+# Pliki środowiskowe (TOKENY, KLUCZE)
+.env
+
+# Foldery Pythona (pliki tymczasowe)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Wirtualne środowiska (jeśli używasz)
+venv/
+env/
+ENV/
+
+# Logi bota
+*.log
+
+# Pliki systemowe
+.DS_Store
+Thumbs.db
