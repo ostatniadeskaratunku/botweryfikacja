@@ -127,3 +127,4 @@ async def verify(interaction: discord.Interaction):
         await interaction.response.send_message(f"Błąd podczas nadawania roli: {e}", ephemeral=True)
 
 bot.run(TOKEN)
+
